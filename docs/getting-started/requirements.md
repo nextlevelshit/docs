@@ -17,18 +17,37 @@ The PHP installation has a few additional requirements. On most servers these
 are default settings, and Bolt should work out-of-the-box.
 
   - A minimum of 32MB of memory allocated to PHP
-  - The following common PHP extensions:
-    - pdo
-    - mysqlnd (to use MySQL as a database)
-    - pgsql (to use PostgreSQL as a database)
-    - curl
-    - gd
-    - gmp
-    - json
+  - The following common PHP extensions (The `*` stands for installed version of PHP e.g. 5 or 7):
+    - `php*-curl`
+    - `php*-json`
+    - `php*-gd`
+    - `php*-gmp`
     - mb_string
+    - `php*-mysqlnd` (to use MySQL as a database)
     - opcache (optional)
+    - `php*-mysql`
+    - `php*-sqlite`
     - posix
+    - `php*-pgsql` (to use PostgreSQL as a database)
     - xml
+
+To check if the required extensions are installed, write this command into your terminal and doublecheck whether the extensions are displayed: 
+
+```bash
+php -m | grep 'curl\|json\|gd\|gmp\|mb_string\|pdo\|posix\|xml'
+```
+
+If extensions are missing, you will have to install theme this way:
+
+```bash
+[sudo] apt-get install php*-EXTENSION
+```
+
+Replace the `*` with your version of PHP installed and `EXTENSION` with the appropriate extension name. For example:
+
+```bash
+...
+```
 
 Note the following PHP modules are known to conflict with Bolt and it's 
 underlying Symfony components, and must be disabled:
